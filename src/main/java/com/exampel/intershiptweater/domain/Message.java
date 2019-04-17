@@ -1,6 +1,5 @@
 package com.exampel.intershiptweater.domain;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -16,13 +15,15 @@ public class Message {
     @JoinColumn(name = "user_id")
     private User author;
 
+    private String filename;
+
     public Message() {
     }
 
     public Message(String text, String tag, User user) {
+        this.author = user;
         this.text = text;
         this.tag = tag;
-        this.author = user;
     }
 
     public String getAuthorName() {
@@ -59,5 +60,13 @@ public class Message {
 
     public void setTag(String tag) {
         this.tag = tag;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
